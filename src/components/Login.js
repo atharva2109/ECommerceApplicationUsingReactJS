@@ -6,7 +6,7 @@ import background from '../grocery_store.jpg'
 import app, { auth } from '../firebase';
 import firebase from 'firebase';
 
-function Login() {
+function Login(props) {
   
   const history=useHistory()
   const [email, setEmail] = useState('')
@@ -14,15 +14,15 @@ function Login() {
   const[isLoggedIn, setIsLoggedIn] =useState(false)
   useEffect(() => {
     localStorage.setItem('token','jdgfhfjekej3940tjtj')
-    
+
   },[isLoggedIn])
   if(isLoggedIn){
+    props.toggle(1);
     history.push('/')
   }
   async function handleSubmit(e){
-    e.preventDefault()
- 
-   
+    e.preventDefault();
+    console.log("props", props);
     try {
      
       await loginform(email, password)
