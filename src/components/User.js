@@ -19,6 +19,8 @@ function User() {
    
 
     async function updateDetails(e){
+        e.preventDefault();
+        console.log(auth.currentUser.uid);
       //alert(auth.currentUser)
       // firebase.database().ref('Users/'+auth.currentUser.uid).update({
         
@@ -35,13 +37,20 @@ function User() {
       //   toast.error('Updation failed')
       // );
      // const user = auth.currentUser;
-  
-     
-        firebase.database().ref('Users/').child (auth.currentUser.uid).update({
-          username,
-          email,
-        dob,
-        password
+     //    function writeUserData(userId, name, email, imageUrl) {
+     //        firebase.database().ref('Users/' + auth.currentUser.uid).set({
+     //            username: username,
+     //            email: email,
+     //            dob : dob,
+     //            password:password
+     //        });
+     //    }
+
+        firebase.database().ref('Users/' + auth.currentUser.uid).set({
+            username: username,
+            email: email,
+            dob : dob,
+            password:password
         }).then(()=>{
           toast.success('User updated succesfully!')
         })
