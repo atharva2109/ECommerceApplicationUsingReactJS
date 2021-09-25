@@ -1,0 +1,27 @@
+label{
+  text-align: left;
+  float:left;
+}
+
+span{
+    text-align: left;
+    float:left;
+}
+h3{
+text-align: center;}
+#id4{
+    margin-left: 990px;
+}
+#id5{
+    margin-right: 3px;
+}
+#btn1{
+    margin-left: 580px;
+}
+#searchbar{
+    display: none;
+}
+#imgid{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
