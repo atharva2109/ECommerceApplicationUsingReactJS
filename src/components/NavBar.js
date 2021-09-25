@@ -12,16 +12,26 @@ import Logout from './Logout'
 import User from './User'
 import app, { auth } from '../firebase';
 import firebase from 'firebase';
+
 function NavBar() {
+    const history = useHistory();
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
+    const [toggle, updateToggle] = useState(0);
   function handleLogout(){
     auth
   .signOut()
-  .then(() => localStorage.removeItem('token'));
+  .then(() => {
+      localStorage.removeItem('token');
+      updateToggle(0);
+      history.push('/');
+  });
   }
- 
- 
+
+  useEffect(()=>{
+
+  },[toggle]);
+
 
  
   return (
@@ -45,7 +55,7 @@ function NavBar() {
         <Switch>
                 <Route exact path='/' component={HomePage}/>
                  {/* <Route path='/logout' component={Logout}/> */}
-                 <Route path='/login' component={Login}/>
+                 <Route path='/login' component={()=><Login toggle={updateToggle}/>}/>
                  <Route path='/user' component={User}/>
                  <Route path='/register' component={Register}/>
                  </Switch>
